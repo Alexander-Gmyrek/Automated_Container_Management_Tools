@@ -7,10 +7,11 @@ Ok so I automated it so now all you need to do is fill out the config.txt file a
 
 Ok so I intogerated and automated the instalation, deployment, and matnince proccess so now its all one step. You can still pick and chose some of these tools to use for your own projects and I will probaly add more in the future, but if you just want to get the database up and running go use the Billing_Database_Installer.
 
-Added automated port switching to use call
+Added automated port switching functionality and added it to db setup.
+To for yourself use call
 . .\port_switching.ps1
 to load the functions.
-Create a hash table like this one
+Create a hash table like this one and put it in a file like \PortReplacementConfig.ps1 
 $filesAndFunctions = @(
     @{
         filePath = "/your/file/path"
@@ -30,5 +31,8 @@ $filesAndFunctions = @(
     }
 )
 
-Then call the function (Pay attention to the order of your required ports)
+Load it with # Load the port replacement configuration
+. .\PortReplacementConfig.ps1
+
+Then call the function
 Request-PortSwitching -requiredPorts $requiredPorts -substitutePorts $substitutePorts -filesAndFunctions $filesAndFunctions

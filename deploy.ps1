@@ -1,7 +1,7 @@
 # Define variables
 $repoPath = "C:\path\to\your\repository"
-$lockFile = "C:\path\to\your\repository\deploy.lock"
-$logFile = "C:\path\to\your\repository\deploy.log"
+$lockFile = "$repoPath\deploy.lock"
+$logFile = "$repoPath\deploy.log"
 
 # Function to log messages
 function Write-Message {
@@ -19,6 +19,7 @@ if (Test-Path $lockFile) {
 
 # Create lock file
 New-Item -ItemType File -Path $lockFile
+
 
 try {
     # Pull latest changes from git
@@ -39,7 +40,7 @@ try {
         Write-Message "Changes detected. Deploying..."
 
         # Pull latest changes
-        & 'C:\Program Files\Git\cmd\git.exe' pull
+        & git pull
 
         # Build and deploy using Docker Compose
         docker-compose build
