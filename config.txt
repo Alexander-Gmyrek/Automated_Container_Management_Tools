@@ -1,0 +1,5 @@
+backupDir=C:\path\to\backup\directory
+containerName=your_mysql_container_name
+mysqlUser=your_mysql_user
+mysqlPassword=your_mysql_password
+repoPath=C:\path\to\your\repository
